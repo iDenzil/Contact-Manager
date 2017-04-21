@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webcm.entity.Contact;
+import com.webcm.entity.Sex;
 import com.webcm.service.ContactService;
 
 @Controller
@@ -54,8 +55,8 @@ public class ContactController {
 		theModel.addAttribute("addcontact", newContact);
 
 		
-		//List<Sex> sexAll = contactService.getSexAll();  //get full sex table from the DB via service impl
-		//theModel.addAttribute("sexall", sexAll);   // add the contacts and sexall to the model
+		List<Sex> sexAll = contactService.getSexAll();  //get full sex table from the DB via service impl
+		theModel.addAttribute("sexall", sexAll);   // add the contacts and sexall to the model
 
 		/*to je sve tu zbog radiobuttonsa za add-contact-form skupa sa implementacijom metode getSexAll
 		<td><form:radiobuttons items="${addcontact.sex}" path="sex.id"></form:radiobuttons></td>
@@ -65,7 +66,8 @@ public class ContactController {
 	}
 	
 	@PostMapping("/saveContact")
-	public String saveContact (@ModelAttribute("contact") Contact saveContact){
+	public String saveContact (/*@RequestParam("selectedSex") String temp,*/ @ModelAttribute("contact") Contact saveContact){
+		//System.out.println("selected sex = "+temp); //testing with requestparam and dropdsown list in JSP
 		contactService.saveContact(saveContact);
 		return "redirect:/contact/list";
 	}

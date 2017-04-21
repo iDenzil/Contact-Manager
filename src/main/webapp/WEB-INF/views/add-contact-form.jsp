@@ -42,16 +42,36 @@
 						<td><label>Street no:</label></td>
 						<td><form:input path="address.streetNo"/></td>
 					</tr>
+
+
 					<tr>
 						<td><label>City ID:</label></td>
-						<td><form:input path="address.city"/></td>
+						<td><form:input path="address.city.cityid"/></td>
+					</tr>
+					<tr>
+						<td><label>Country ID:</label></td>
+						<td><form:input path="address.city.country.countryid"/></td>
+					</tr>
+					<tr>
+						<td><label>Sex:</label></td>
+						<td>
+							<form:select path="sex.id">
+									<form:options items="${sex.name}" value="sex.id" />
+							</form:select>
+           				</td>
 					</tr>
 
 					<tr>
-						<td><label>Sex:</label></td>
-						<td>Female<form:radiobutton path="sex.id" value="1"/></td>
-						<td>Male<form:radiobutton path="sex.id" value="2"/></td>
+						<td><label>Sex 2nd:</label></td>
+						<td>
+							<form:select path="sex.id">
+								<c:forEach var="SexList" items="${sexall}">
+									<option value="${sex.id}">${SexList.name}</option>
+								</c:forEach>					
+							</form:select>
+						</td>
 					</tr>
+
 
 					<tr>
 						<td><label></label></td>
@@ -60,7 +80,11 @@
 					
 				</tbody>
 			</table>
-					
+		
+		
+
+		
+		
 		</form:form>
 		<div style="clear;both;"></div>
 		

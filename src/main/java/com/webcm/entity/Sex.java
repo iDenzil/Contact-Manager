@@ -18,9 +18,17 @@ public class Sex {
 	@Column(name="name")
 	private String name;
 	
+	//private LinkedHashMap<Integer, String> sexoptions;
+	
 	public Sex() {
+	//	sexoptions = new LinkedHashMap<>();
+	//	sexoptions.put((int) id, name);
 	}
 	
+	/*public LinkedHashMap<Integer, String> getSexoptions() {
+		return sexoptions;
+	}*/
+
 	public Sex(String name) {
 		this.name = name;
 	}

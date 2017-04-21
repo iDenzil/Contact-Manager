@@ -16,11 +16,13 @@ import javax.persistence.Table;
 public class Contact {
 
 	@Id
-	@SequenceGenerator(name="pk_sequence",sequenceName="student_id_seq", allocationSize=1)
+	@SequenceGenerator(name="pk_sequence",sequenceName="contact_id_seq", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
 	@Column(name="id", unique=true, nullable=false)
 	private long id;
-
+	
+	//@NotNull(message="is required")
+	//@Size(min=1, max=7, message="is required")
 	@Column(name="first_name")
 	private String firstName;
 	
@@ -34,7 +36,7 @@ public class Contact {
 	private String email;
 
 	//@Column(name="address_id")
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	private Address address;
 
 	//@Column(name="sex_id")

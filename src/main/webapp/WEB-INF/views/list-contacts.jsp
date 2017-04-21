@@ -11,7 +11,7 @@
 			class="add-button"
 		/>
 		
-		
+	
 		<!-- HTML table from the DB-->
 		<table>
 			<tr>
