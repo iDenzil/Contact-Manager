@@ -21,45 +21,42 @@ public class ContactDAOImpl implements ContactDAO {
 	@Override
 	public List<Contact> getContacts() {
 		
-		//get the hibernate session
-		Session currentSession = sessionFactory.getCurrentSession();// System.out.println("got session");
-		//create query
+		Session currentSession = sessionFactory.getCurrentSession();
 		Query<Contact> theQuery = currentSession.createQuery
-									("from Contact order by lastName",Contact.class); //System.out.println("finished query");
-		// execute query
-		List<Contact> contacts = theQuery.getResultList();// System.out.println("got result list");
-		//return the result
+									("from Contact order by lastName",Contact.class);
+		List<Contact> contacts = theQuery.getResultList();
 		return contacts;
 	}
 
 	@Override
 	public void saveContact(Contact saveContact) {
-		// get current session
 		Session currentSession = sessionFactory.getCurrentSession();
-		// save contact
 		currentSession.saveOrUpdate(saveContact);
 	}
 
 	@Override
 	public Contact getContact(long theId) {
-		// get current session
 		Session currentSession = sessionFactory.getCurrentSession();
-		//get the contact based on ID from DB
 		Contact theContact = currentSession.get(Contact.class, theId);
-		// save contact
 		return theContact;
 	}
 
 	@Override
 	public void deleteContact(long theId) {
-		// get current session
 		Session currentSession = sessionFactory.getCurrentSession();
-		//retrieve the contact using ID
 		Contact theContact = currentSession.get(Contact.class, theId);
-		//delete the contact
 		currentSession.delete(theContact);
 	}
 
+	@Override
+	public List<Sex> getSexList() {
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query<Sex> theQuery = currentSession.createQuery("from Sex",Sex.class); 
+		List<Sex> sexList = theQuery.getResultList();
+		return sexList;
+	}
+
+		
 	@Override
 	public void doTest() {}/*
 		// obrisati
@@ -82,17 +79,7 @@ public class ContactDAOImpl implements ContactDAO {
 		return theSex;
 	}
 */
-	@Override
-	public List<Sex> getSexAll() {
-		//get the hibernate session
-		Session currentSession = sessionFactory.getCurrentSession();// System.out.println("got session");
-		//create query
-		Query<Sex> theQuery = currentSession.createQuery
-									("from Sex",Sex.class); //System.out.println("finished query");
-		// execute query
-		List<Sex> sexAll = theQuery.getResultList();// System.out.println("got result list");
-		//return the result
-		return sexAll;
-	}
+
+
 
 }

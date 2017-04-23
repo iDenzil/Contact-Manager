@@ -19,5 +19,6 @@ public interface ContactService {
 	
 	//public Sex getSex(long theId);
 
-	public List<Sex> getSexAll();
+	public List<Sex> getSexList();
+
 }

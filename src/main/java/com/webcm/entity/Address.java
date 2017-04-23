@@ -18,7 +18,7 @@ public class Address {
 	@SequenceGenerator(name="pk_sequence",sequenceName="address_id_seq", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
 	@Column(name="id", unique=true, nullable=false)
-	private long addressid;
+	private long id;
 	
 	@Column(name="street")
 	private String street;
@@ -38,12 +38,12 @@ public class Address {
 		this.city = city;
 	}
 
-	public long getAddressid() {
-		return addressid;
+	public long getId() {
+		return id;
 	}
 
-	public void setAddressid(long addressid) {
-		this.addressid = addressid;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getStreet() {

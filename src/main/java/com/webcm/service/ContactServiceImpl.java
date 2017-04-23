@@ -31,7 +31,6 @@ public class ContactServiceImpl implements ContactService {
 		contactDAO.saveContact(saveContact);		
 	}
 
-
 	@Override
 	@Transactional
 	public Contact getContact(long theId) {
@@ -62,8 +61,8 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	@Transactional
-	public List<Sex> getSexAll() {
-		return contactDAO.getSexAll();
+	public List<Sex> getSexList() {
+		return contactDAO.getSexList();
 	}
 
 }

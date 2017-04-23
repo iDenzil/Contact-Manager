@@ -19,7 +19,7 @@ public class City {
 	@SequenceGenerator(name="pk_sequence",sequenceName="city_id_seq", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
 	@Column(name="id", unique=true, nullable=false)
-	private long cityid;
+	private long id;
 	
 	@Column(name="name")
 	private String name;
@@ -27,7 +27,7 @@ public class City {
 	@Column(name="zip_code")
 	private String zipCode;
 	
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
 	private Country country;
 
 	public City() {
@@ -39,12 +39,12 @@ public class City {
 		this.country = country;
 	}
 
-	public long getCityid() {
-		return cityid;
+	public long getId() {
+		return id;
 	}
 
-	public void setCityid(long cityid) {
-		this.cityid = cityid;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {

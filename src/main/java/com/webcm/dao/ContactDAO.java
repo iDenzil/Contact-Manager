@@ -17,7 +17,6 @@ public interface ContactDAO {
 
 	public void doTest();//obrisati
 
-	//public Sex getSex(long theId);
+	public List<Sex> getSexList();
 
-	public List<Sex> getSexAll();
 }

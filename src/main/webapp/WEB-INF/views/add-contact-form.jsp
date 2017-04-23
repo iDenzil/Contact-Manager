@@ -1,20 +1,27 @@
 <%@ include file="common/header.jspf"%>
-<%@ include file="common/navigation.jspf"%>
 
-		<link type="text/css"
+	<link type="text/css"
 		rel="stylesheet"
 	  	href="${pageContext.request.contextPath}/resources/css/add-contact-style.css" />
 
+<%@ include file="common/navigation.jspf"%>
+
+	<div id="wrapper">
+		<div id="header">
+			<h2>Add Contact</h2>
+		</div>
+	</div>
+	<br>
 
 	<div id="container">
 
-		<h3>Save Contact</h3>
+		<!--  <h3>Save Contact</h3> -->
 		
 		<form:form action="saveContact" modelAttribute="addcontact" method="POST">
 		
-		<!-- Need to associate this data with contact id -->
+		<!-- Need to associate this data with contact and address id -->
 		<!-- So when doing submit the backend knows which contact to form the update operation on -->
-		<form:hidden path="id"/>
+		<form:hidden path="id"/><form:hidden path="address.id"/>
 		
 			<table>
 				<tbody>
@@ -26,6 +33,15 @@
 						<td><label>Last name:</label></td>
 						<td><form:input path="lastName"/></td>
 					</tr>
+					<tr>
+						<td><label>Sex:</label></td>
+						<td>
+							<form:select path="sex.id">
+           						<form:options items="${sexoptions}" itemValue="id" itemLabel="name" />
+           					</form:select>
+						</td>
+					</tr>
+					<tr><td><br></td></tr>  <!-- aesthetics -->
 					<tr>
 						<td><label>Phone:</label></td>
 						<td><form:input path="phone"/></td>
@@ -42,58 +58,34 @@
 						<td><label>Street no:</label></td>
 						<td><form:input path="address.streetNo"/></td>
 					</tr>
-
-
 					<tr>
-						<td><label>City ID:</label></td>
-						<td><form:input path="address.city.cityid"/></td>
-					</tr>
-					<tr>
-						<td><label>Country ID:</label></td>
-						<td><form:input path="address.city.country.countryid"/></td>
-					</tr>
-					<tr>
-						<td><label>Sex:</label></td>
+						<td><label>City:</label></td>
 						<td>
-							<form:select path="sex.id">
-									<form:options items="${sex.name}" value="sex.id" />
-							</form:select>
-           				</td>
-					</tr>
-
-					<tr>
-						<td><label>Sex 2nd:</label></td>
-						<td>
-							<form:select path="sex.id">
-								<c:forEach var="SexList" items="${sexall}">
-									<option value="${sex.id}">${SexList.name}</option>
-								</c:forEach>					
-							</form:select>
+							<form:select path="address.city.id">
+           						<form:options items="${cityoptions}" itemValue="id" itemLabel="name" />
+           					</form:select>
 						</td>
 					</tr>
-
-
+					<tr>
+						<td><label><br></label></td>
+						<td>
+							<input class="add" type="Submit" value="Add City"
+							onclick="window.location.href='/city/addCityForm';return false;"/>
+						</td>
+					</tr>
+					<tr><td><br></td></tr>	<!-- aesthetics -->
 					<tr>
 						<td><label></label></td>
-						<td><input type="submit" value="Save" class="save"/></td>
+						<td><input class="btn btn-success" type="submit" value="Save" /></td>
 					</tr>
 					
 				</tbody>
 			</table>
-		
-		
-
-		
-		
 		</form:form>
-		<div style="clear;both;"></div>
-		
-		<p>
-			<a href="${pageContext.request.contextPath}/contact/list">Back to list</a>
-		</p>
-				
 	</div>
+
+	<br><br>
+	<input class="btn-xs" type="Submit" value="Back"
+		onclick="window.history.back();return false;"/>
 	
-<br><br><br>
-<h6>Must fix radiobuttons!</h6>
 <%@ include file="common/footer.jspf"%>

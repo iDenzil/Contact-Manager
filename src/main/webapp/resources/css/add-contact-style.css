@@ -21,12 +21,13 @@ input {
 	float:left;
 }
 
-.save {
-	font-weight: bold;
-	width: 130px; 
-	padding: 5px 10px; 
-	margin-top: 30px;
-	background: #cccccc;
+.add {
+	font-size: 13px;
+	width: 100px; 
+	padding: 0px 0px;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	background: #d7d7d7;
 }
 
 table {   

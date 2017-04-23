@@ -1,7 +1,12 @@
 <%@ include file="common/header.jspf"%>
 <%@ include file="common/navigation.jspf"%>
 
-		
+	<div id="wrapper">
+		<div id="header">
+			<h2>About - Contact Manager v0.6 Alpha</h2>
+		</div>
+	</div>
+			
 	<div id="container">
 		<div id="content">
 			<h3>This is about to be an about page.</h3>
@@ -20,5 +25,8 @@
 	</div>
 
 
-
+	<br><br>
+	<input class="btn-xs" type="Submit" value="Home"
+		onclick="window.location.href='/welcome';return false;"/>
+		
 <%@ include file="common/footer.jspf"%>

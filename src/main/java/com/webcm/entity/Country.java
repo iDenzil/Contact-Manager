@@ -17,7 +17,7 @@ public class Country {
 	@SequenceGenerator(name="pk_sequence",sequenceName="country_id_seq", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
 	@Column(name="id", unique=true, nullable=false)
-	private long countryid;
+	private long id;
 	
 	@Column(name="name")
 	private String name;
@@ -37,12 +37,12 @@ public class Country {
 		this.alpha3 = alpha3;
 	}
 
-	public long getCountryid() {
-		return countryid;
+	public long getId() {
+		return id;
 	}
 
-	public void setCountryid(long countryid) {
-		this.countryid = countryid;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -71,7 +71,7 @@ public class Country {
 
 	@Override
 	public String toString() {
-		return name+" "+alpha2+" "+alpha3;
+		return name+", "+alpha2+", "+alpha3;
 	}
 	
 	

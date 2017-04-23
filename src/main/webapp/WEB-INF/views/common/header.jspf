@@ -8,14 +8,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Contact Manager</title>
 	
-	<!-- <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.css" rel="stylesheet"> -->
 	<link  rel="stylesheet"
 		href="${pageContext.request.contextPath}/resources/webjars/bootstrap/3.3.7-1/css/bootstrap.css"/>
-	
+
 	<link type="text/css"
 		rel="stylesheet"
-	  	href="${pageContext.request.contextPath}/resources/css/style.css" />
-	  	
+	  	href="${pageContext.request.contextPath}/resources/css/style.css" />	  	
 </head>
 
 <body>

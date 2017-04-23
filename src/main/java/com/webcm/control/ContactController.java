@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.webcm.entity.City;
 import com.webcm.entity.Contact;
 import com.webcm.entity.Sex;
+import com.webcm.service.CityService;
 import com.webcm.service.ContactService;
 
 @Controller
@@ -22,6 +24,8 @@ public class ContactController {
 	//inject the contact service into the controller
 	@Autowired
 	private ContactService contactService;
+	@Autowired
+	private CityService cityService;	
 	
 	
 	@GetMapping("/about")
@@ -46,7 +50,7 @@ public class ContactController {
 		//System.out.println(theContacts);
 		return "list-contacts";
 	}
-	
+
 	@GetMapping("/addContactForm")
 	public String addContact(Model theModel){
 		
@@ -54,32 +58,38 @@ public class ContactController {
 		Contact newContact = new Contact();
 		theModel.addAttribute("addcontact", newContact);
 
-		
-		List<Sex> sexAll = contactService.getSexAll();  //get full sex table from the DB via service impl
-		theModel.addAttribute("sexall", sexAll);   // add the contacts and sexall to the model
+		List<Sex> sexList = contactService.getSexList();  //get full sex table from the DB via service impl
+		theModel.addAttribute("sexoptions", sexList);   // add the sexList to the model
 
-		/*to je sve tu zbog radiobuttonsa za add-contact-form skupa sa implementacijom metode getSexAll
-		<td><form:radiobuttons items="${addcontact.sex}" path="sex.id"></form:radiobuttons></td>
-		ali trenutno nije implementirano jer imam pametnijeg posla */
+		List<City> cityList = cityService.getCityList();
+		theModel.addAttribute("cityoptions", cityList);   // add the cityList to the model
+
+//		List<Country> countryList = contactService.getCountryList();
+//		theModel.addAttribute("countryoptions", countryList);   // add the countryList to the model
 		
 		return "add-contact-form";
 	}
 	
 	@PostMapping("/saveContact")
-	public String saveContact (/*@RequestParam("selectedSex") String temp,*/ @ModelAttribute("contact") Contact saveContact){
-		//System.out.println("selected sex = "+temp); //testing with requestparam and dropdsown list in JSP
+	public String saveContact (@ModelAttribute("addcontact") Contact saveContact){  // na neku foru ovdje umjesto atributa addcontact moze biti bilokaj - TESTIRANO
 		contactService.saveContact(saveContact);
 		return "redirect:/contact/list";
 	}
 
 	@GetMapping("/update")
-	public String showUpdateFor(@RequestParam("contactId") long theId, Model theModel ){
-		//get the contact from the DB via service
-		Contact theContact = contactService.getContact(theId);
+	public String updateContact(@RequestParam("contactId") long theId, Model theModel ){
 		
-		//set the contact as model to prepopulate the form
-		theModel.addAttribute("addcontact", theContact); System.out.println("added contact attribute");
+		Contact theContact = contactService.getContact(theId);  //get the contact from the DB via service
+		theModel.addAttribute("addcontact", theContact);  //set the contact as model to prepopulate the form
+		
+		List<Sex> sexList = contactService.getSexList();  //get full sex table from the DB via service impl
+		theModel.addAttribute("sexoptions", sexList);   // add the sexList to the model
+		
+		List<City> cityList = cityService.getCityList();
+		theModel.addAttribute("cityoptions", cityList);   // add the cityList to the model
 
+//		List<Country> countryList = contactService.getCountryList();
+//		theModel.addAttribute("countryoptions", countryList);   // add the countryList to the model
 		return "add-contact-form";
 	}
 	
