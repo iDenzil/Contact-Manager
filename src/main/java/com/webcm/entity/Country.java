@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="country")
@@ -19,12 +21,18 @@ public class Country {
 	@Column(name="id", unique=true, nullable=false)
 	private long id;
 	
+	@NotNull(message="Required input")
+	@Size(min=2, max=50, message="Required input (2-50 characters)")
 	@Column(name="name")
 	private String name;
 	
+	@NotNull(message="Required input")
+	@Size(min=2, max=2, message="Required input (2 characters)")
 	@Column(name="alpha_2")
 	private String alpha2;
-	
+
+	@NotNull(message="Required input")
+	@Size(min=3, max=3, message="Required input (3 characters)")
 	@Column(name="alpha_3")
 	private String alpha3;
 

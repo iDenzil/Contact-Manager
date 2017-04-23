@@ -10,6 +10,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="contact")
@@ -21,17 +24,25 @@ public class Contact {
 	@Column(name="id", unique=true, nullable=false)
 	private long id;
 	
-	//@NotNull(message="is required")
-	//@Size(min=1, max=7, message="is required")
+	@NotNull(message="Required input")
+	@Size(min=2, max=20, message="Required input (2-20 characters)")
 	@Column(name="first_name")
 	private String firstName;
 	
+	@NotNull(message="Required input")
+	@Size(min=2, max=50, message="Required input (2-50 characters)")
 	@Column(name="last_name")
 	private String lastName;
 
+	@NotNull(message="Required input")
+	@Size(min=6, max=13, message="Required input (6-13 characters)")
 	@Column(name="phone")
 	private String phone;
-
+	
+	//@NotNull(message="Required input")
+	@Size(max=50, message="Max input 50 characters")
+	//@Email(message="Please provide a valid email address")
+	@Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address")
 	@Column(name="email")
 	private String email;
 

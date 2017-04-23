@@ -2,7 +2,7 @@
 
 	<link type="text/css"
 		rel="stylesheet"
-  		href="${pageContext.request.contextPath}/resources/css/add-contact-style.css" />
+  		href="${pageContext.request.contextPath}/resources/css/add-style.css" />
 
 <%@ include file="common/navigation.jspf"%>
 
@@ -27,11 +27,16 @@
 				<tbody>
 					<tr>
 						<td><label>Name:</label></td>
-						<td><form:input path="name"/></td>
+						<td><form:input path="name"/>
+							<form:errors path="name" class="error"/>	<!-- Validation -->
+						</td>
+						
 					</tr>
 					<tr>
-						<td><label>ZIP CODE:</label></td>
-						<td><form:input path="zipCode"/></td>
+						<td><label>ZIP code:</label></td>
+						<td><form:input path="zipCode"/>
+							<form:errors path="zipCode" class="error"/>	<!-- Validation -->
+						</td>
 					</tr>
 					<tr>
 						<td><label>Country:</label></td>
@@ -44,14 +49,14 @@
 					<tr>
 						<td><label><br></label></td>
 						<td>
-							<input class="add" type="Submit" value="Add Country"
+							<input class="btn-xs btn-info" type="Submit" value="Add Country"
 							onclick="window.location.href='/country/addCountryForm';return false;"/>
 						</td>
 					</tr>
-
+					<tr><td><br></td></tr>	<!-- aesthetics -->
 					<tr>
 						<td><label></label></td>
-						<td><input class="btn btn-success" type="submit" value="Save" /></td>
+						<td><input class="btn-lg btn-success btn-save" type="submit" value="Save" /></td>
 					</tr>
 					
 				</tbody>
@@ -60,7 +65,8 @@
 	</div>
 
 	<br><br>
-	<input class="btn-xs" type="Submit" value="Back"
+	<input class="btn btn-sm" type="Submit" value="Back"
 		onclick="window.history.back();return false;"/>
+	<br><br>
 		
 <%@ include file="common/footer.jspf"%>

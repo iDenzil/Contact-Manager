@@ -26,7 +26,8 @@
 
 
 	<br><br>
-	<input class="btn-xs" type="Submit" value="Home"
+	<input class="btn-sm" type="Submit" value="Home"
 		onclick="window.location.href='/welcome';return false;"/>
+	<br><br>
 		
 <%@ include file="common/footer.jspf"%>

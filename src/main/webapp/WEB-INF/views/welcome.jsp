@@ -9,15 +9,9 @@
 		
 	<div id="container">
 		<div id="content">
-			Welcome ${name}<br>
 			
-			<input class="btn-lg btn-success" type="Submit" value="View Contacts"
+			<input class="btn-lg btn-success" type="Submit" value="Welcome ${name}. Consider implementing a decent landing page."
 							onclick="window.location.href='/contact/list';return false;"/>
-
-			<input class="btn-sm" type="Submit" value="Add Country"
-							onclick="window.location.href='/country/addCountryForm';return false;"/>
-			<input class="btn-xs" type="Submit" value="List Country"
-							onclick="window.location.href='/country/list';return false;"/>
 
 		</div>
 	</div>

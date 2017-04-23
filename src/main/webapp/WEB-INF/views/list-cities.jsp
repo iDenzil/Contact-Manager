@@ -1,9 +1,4 @@
 <%@ include file="common/header.jspf"%>
-	
-	<link type="text/css"
-		rel="stylesheet"
-	  	href="${pageContext.request.contextPath}/resources/css/city.css" />	
-	  	
 <%@ include file="common/navigation.jspf"%>
 
 	<div id="wrapper">
@@ -22,7 +17,7 @@
 		<br><br>
 		
 		<!-- HTML table from the DB-->
-		<table>
+		<table class="table-city">
 			<tr>
 				<th>Name</th>
 				<th>ZIP Code</th>

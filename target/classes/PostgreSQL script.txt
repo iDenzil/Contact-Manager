@@ -73,7 +73,7 @@ INSERT INTO CONTACT (first_name, last_name, phone, email, sex_id, address_id) VA
 INSERT INTO CONTACT (first_name, last_name, phone, email, sex_id, address_id) VALUES ('Jane', 'Do', '091jane', 'jane.do@incognito.com', '1', '3');
 INSERT INTO CONTACT (first_name, last_name, phone, email, sex_id, address_id) VALUES ('Bruce', 'Willis', '091bruce', 'bruce.willis@celeb.com', '2', '4');
 INSERT INTO CONTACT (first_name, last_name, phone, email, sex_id, address_id) VALUES ('Jean-Claude', 'Van Damme', '091vandamme', 'jean-claude.vandamme@celeb.com', '2', '5');
-INSERT INTO CONTACT (first_name, last_name, phone, email, sex_id, address_id) VALUES ('Arnold', 'Schwartzenegger', '091arnie', 'arnold.scharafzigger@celeb.com', '2', '6');
+INSERT INTO CONTACT (first_name, last_name, phone, email, sex_id, address_id) VALUES ('Arnold', 'Schwarzenegger', '091arnie', 'arnold.scharafzigger@celeb.com', '2', '6');
 INSERT INTO CONTACT (first_name, last_name, phone, email, sex_id, address_id) VALUES ('Sylvester', 'Stallone', '091sly', 'sly.stone@celeb.com', '2', '7');
 INSERT INTO CONTACT (first_name, last_name, phone, email, sex_id, address_id) VALUES ('Natalie', 'Portman', '091nat', 'natalie.portman@gmail.com', '1', '8');
 

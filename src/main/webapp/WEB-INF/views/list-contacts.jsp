@@ -43,12 +43,12 @@
 				
 				<!--  TABLE DATA  -->
 				<tr>
-					<td>${temp.firstName}</td>
-					<td>${temp.lastName}</td>
-					<td>${temp.sex.name}</td>
-					<td>${temp.phone}</td>
-					<td>${temp.email}</td>
-					<td>${temp.address}</td>
+					<td class="td-center">${temp.firstName}</td>
+					<td class="td-center">${temp.lastName}</td>
+					<td class="td-center">${temp.sex.name}</td>
+					<td class="td-center">${temp.phone}</td>
+					<td class="td-center">${temp.email}</td>
+					<td class="td-left">${temp.address}</td>
 					
 					<td>
 						<input class="btn-xs btn-primary" type="Submit" value="Update"
@@ -67,6 +67,5 @@
 		
 		</div>
 	</div>
-
 
 <%@ include file="common/footer.jspf"%>

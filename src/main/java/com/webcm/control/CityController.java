@@ -2,10 +2,16 @@ package com.webcm.control;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +30,12 @@ public class CityController {
 	private CountryService countryService;
 	@Autowired
 	private CityService cityService;	
+
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder){
+		StringTrimmerEditor sTrim = new StringTrimmerEditor(true); //contrusctor argument TRUE trims whitespace down to null
+		dataBinder.registerCustomEditor(String.class, sTrim);
+	}
 		
 	@GetMapping("/list")
 	public String listContacts(Model theModel){
@@ -47,9 +59,16 @@ public class CityController {
 	}
 
 	@PostMapping("/saveCity")
-	public String saveCity ( @ModelAttribute("addcity") City saveCity){
-		cityService.saveCity(saveCity);
-		return "redirect:/city/list";
+	public String saveCity (@Valid @ModelAttribute("addcity") City saveCity, BindingResult bind, Model theModel){
+		if (bind.hasErrors()){
+			List<Country> countryList = countryService.getCountryList(); //required for dropdown country list 
+			theModel.addAttribute("countryoptions", countryList); 		 //required for dropdown country list
+			return "add-city-form";
+		}
+		else {
+			cityService.saveCity(saveCity);
+			return "redirect:/city/list";
+		}
 	}
 
 	@GetMapping("/update")

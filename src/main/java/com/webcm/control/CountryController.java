@@ -2,10 +2,16 @@ package com.webcm.control;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +26,12 @@ public class CountryController {
 
 	@Autowired
 	private CountryService countryService;
+
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder){
+		StringTrimmerEditor sTrim = new StringTrimmerEditor(true); //contrusctor argument TRUE trims whitespace down to null
+		dataBinder.registerCustomEditor(String.class, sTrim);
+	}
 
 	@GetMapping("/list")
 	public String listCountries(Model theModel){
@@ -43,9 +55,12 @@ public class CountryController {
 	}
 
 	@PostMapping("/saveCountry")
-	public String saveCountry ( @ModelAttribute("addcountry") Country saveCountry){
-		countryService.saveCountry(saveCountry);
-		return "redirect:/country/list";
+	public String saveCountry (@Valid @ModelAttribute("addcountry") Country saveCountry, BindingResult bind){
+		if (bind.hasErrors()) return "add-country-form";
+		else {
+			countryService.saveCountry(saveCountry);
+			return "redirect:/country/list";
+		}
 	}
 
 	@GetMapping("/update")
@@ -65,4 +80,5 @@ public class CountryController {
 		countryService.deleteCountry(theId);
 		return "redirect:/country/list";
 	}
+	
 }

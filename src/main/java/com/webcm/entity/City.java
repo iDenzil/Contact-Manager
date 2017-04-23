@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="city")
@@ -20,10 +23,15 @@ public class City {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
 	@Column(name="id", unique=true, nullable=false)
 	private long id;
-	
+
+	@NotNull(message="Required input")
+	@Size(min=2, max=50, message="Required input (2-50 characters)")
 	@Column(name="name")
 	private String name;
-	
+
+	@NotNull(message="Required input")
+	@Size(min=2, max=10, message="Required input (2-10 characters)")
+	@Pattern(regexp="^[a-zA-Z0-9]", message="A-Z and 0-9 required")
 	@Column(name="zip_code")
 	private String zipCode;
 	

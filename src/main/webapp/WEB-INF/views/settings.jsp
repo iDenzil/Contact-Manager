@@ -13,13 +13,16 @@
 			<br>
 			<h4>ToDo List:</h4>
 			<ul>
-				<li>Validation</li>
-				<li>Full Javadoc implementation</li>
+				<li>Address Validation - street name and number</li>
 				<li>Exception managment! Disable DELETE country(city) if FK bound to a city(address).</li>
+				<li>Full Javadoc implementation</li>
 				<li>User access levels regulation</li>
-				<li>Remove CHAD buttons and implement Bootstrap only</li>
-				<li> look into PostMapping(/saveContact) method saveContact (@ModelAttribute("contact") - why not addcontact.</li>
+				<li>look into PostMapping(/saveContact) method saveContact (@ModelAttribute("contact") - why not addcontact.</li>
 			</ul>
+
+			<input class="btn-lg btn-primary" type="Submit" value="Buttons demo"
+				onclick="window.location.href='/contact/buttons';return false;"/>
+			
 			<br><br><br><br>
 			<div id="headersmall">
 				<h4><label>Change Log:</label></h4>
@@ -54,10 +57,14 @@
 				<li>Securiy configuration updated for /city and /country</li>
 				<li>More timewasting on buttons and aesthetics</li>
 				<li>EVERY(basic)THING WORKS!</li>
+				<li>Implemented Validation. Everything except address fields works</li>
 			</ul>
 		</div>
 	</div>
-
-
-
+	
+	<br><br>
+	<input class="btn-sm" type="Submit" value="Home"
+		onclick="window.location.href='/welcome';return false;"/>
+	<br><br>
+	
 <%@ include file="common/footer.jspf"%>

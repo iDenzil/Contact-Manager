@@ -2,10 +2,16 @@ package com.webcm.control;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +33,11 @@ public class ContactController {
 	@Autowired
 	private CityService cityService;	
 	
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder){
+		StringTrimmerEditor sTrim = new StringTrimmerEditor(true); //contrusctor argument TRUE trims whitespace down to null
+		dataBinder.registerCustomEditor(String.class, sTrim);
+	}
 	
 	@GetMapping("/about")
 	public String about(Model theModel){
@@ -37,6 +48,11 @@ public class ContactController {
 	@GetMapping("/settings")
 	public String settings(){
 		return "settings";
+	}
+	
+	@GetMapping("/buttons")
+	public String buttons(){
+		return "buttons";
 	}
 	
 	
@@ -71,9 +87,18 @@ public class ContactController {
 	}
 	
 	@PostMapping("/saveContact")
-	public String saveContact (@ModelAttribute("addcontact") Contact saveContact){  // na neku foru ovdje umjesto atributa addcontact moze biti bilokaj - TESTIRANO
-		contactService.saveContact(saveContact);
-		return "redirect:/contact/list";
+	public String saveContact (@Valid @ModelAttribute("addcontact") Contact saveContact, BindingResult bind, Model theModel){  // na neku foru ovdje umjesto atributa addcontact moze biti bilokaj - TESTIRANO
+		if (bind.hasErrors()){
+			List<Sex> sexList = contactService.getSexList();	//required for dropdown sex list
+			theModel.addAttribute("sexoptions", sexList);	 	//required for dropdown sex list
+			List<City> cityList = cityService.getCityList();	//required for dropdown city list 
+			theModel.addAttribute("cityoptions", cityList); 	//required for dropdown city list
+			return "add-contact-form";
+		}
+		else {
+			contactService.saveContact(saveContact);
+			return "redirect:/contact/list";
+		}
 	}
 
 	@GetMapping("/update")
