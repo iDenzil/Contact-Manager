@@ -14,9 +14,10 @@
 			<h4>ToDo List:</h4>
 			<ul>
 				<li>Address Validation - street name and number</li>
+				<li>Fix pattern vaildator for names</li>
 				<li>Exception managment! Disable DELETE country(city) if FK bound to a city(address).</li>
 				<li>Full Javadoc implementation</li>
-				<li>User access levels regulation</li>
+				<li>User access levels regulation..not as easy as expected</li>
 				<li>look into PostMapping(/saveContact) method saveContact (@ModelAttribute("contact") - why not addcontact.</li>
 			</ul>
 

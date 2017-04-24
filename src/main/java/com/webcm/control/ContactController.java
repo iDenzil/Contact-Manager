@@ -100,7 +100,8 @@ public class ContactController {
 			return "redirect:/contact/list";
 		}
 	}
-
+	
+	//@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/update")
 	public String updateContact(@RequestParam("contactId") long theId, Model theModel ){
 		
