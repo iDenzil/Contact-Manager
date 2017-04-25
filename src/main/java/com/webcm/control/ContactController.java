@@ -27,65 +27,87 @@ import com.webcm.service.ContactService;
 @RequestMapping("/contact")
 public class ContactController {
 	
-	//inject the contact service into the controller
+	/**
+	 * Injects the Contact service into controller
+	 */
 	@Autowired
 	private ContactService contactService;
+	
+	/**
+	 * Injects the City service into controller
+	 */
 	@Autowired
 	private CityService cityService;	
 	
+	/**
+	/**
+	 * Performs white space trimming on Strings as a part of validation process.
+	 * 
+	 * Removes leading and trailing white space from String objects.
+	 * If String only has white space it will be trimmer down to NULL object.
+	 * Annotation InitBinder works as a pre-processor - it will pre-process each web request to the controller.
+	 * Constructs a StringTrimmerEditor (part of Spring API) with the argument TRUE - forces the white space trimm down to NULL.
+	 * Uses WebDataBinder to register this as a custom editor and apply it to every String class.
+	 * 
+	 * @param dataBinder	WebDataBinder object used to register the custom editor
+	 */
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder){
-		StringTrimmerEditor sTrim = new StringTrimmerEditor(true); //contrusctor argument TRUE trims whitespace down to null
+		StringTrimmerEditor sTrim = new StringTrimmerEditor(true);
 		dataBinder.registerCustomEditor(String.class, sTrim);
 	}
 	
-	@GetMapping("/about")
-	public String about(Model theModel){
-		//contactService.doTest();  testna metoda, obrisati kasnije
-		return "about";
-	}
-	
-	@GetMapping("/settings")
-	public String settings(){
-		return "settings";
-	}
-	
-	@GetMapping("/buttons")
-	public String buttons(){
-		return "buttons";
-	}
-	
-	
+	/**
+	 * Handles the list contacts request
+	 * 
+	 * Retrieves all the Contact entries from the DB into a list, adds the list to the model and passes it onto the appropriate view.
+	 *  
+	 * @param theModel	Model container for the result list
+	 * @return			Contact-list view
+	 */
 	@GetMapping("/list")
 	public String listContacts(Model theModel){
-		
-		// get contacts from the service
 		List<Contact> theContacts = contactService.getContacts();
-		// add the contacts and sexall to the model
 		theModel.addAttribute("contacts", theContacts);
-		//System.out.println(theContacts);
 		return "list-contacts";
 	}
 
+	/**
+	 * Handles the add contact request
+	 * 
+	 * Creates a new Contact object and adds it to the model, for the form to store data in.
+	 * Retrieves all the Sex and City entries and adds them to the model - required for the dropdown selection.
+	 * 
+	 * @param theModel	Model container with the data
+	 * @return			Add-contact view
+	 */
 	@GetMapping("/addContactForm")
 	public String addContact(Model theModel){
-		
-		//create model attribute to bind form data
 		Contact newContact = new Contact();
 		theModel.addAttribute("addcontact", newContact);
 
-		List<Sex> sexList = contactService.getSexList();  //get full sex table from the DB via service impl
-		theModel.addAttribute("sexoptions", sexList);   // add the sexList to the model
-
+		List<Sex> sexList = contactService.getSexList();
+		theModel.addAttribute("sexoptions", sexList);
 		List<City> cityList = cityService.getCityList();
-		theModel.addAttribute("cityoptions", cityList);   // add the cityList to the model
+		theModel.addAttribute("cityoptions", cityList);
 
-//		List<Country> countryList = contactService.getCountryList();
-//		theModel.addAttribute("countryoptions", countryList);   // add the countryList to the model
-		
 		return "add-contact-form";
 	}
 	
+	/**
+	 * 
+	 * Handles the save contact request received from the add-contact page and validates the data
+	 * 
+	 * Redirected from the add-contact form page containing the data in the model. 
+	 * Data validation is requested using Valid annotation and the validation result is stored in the BindingResult object.
+	 * If the result has errors, the user is returned back to the add-contact form. Controller has to request the City/Sex list again to populate the dropdown menu.
+	 * IF the result has no errors, the save method is called and the user is redirected to the contact-list page.  
+	 * 
+	 * @param saveContact	Model attribute containing the new contact data
+	 * @param bind			The validation result object
+	 * @param theModel		Model container for City/Sex list required to populate the dropdown menus
+	 * @return				Redirects the user to the contact-list page if validation contains no errors, add-contact view if it does
+	 */
 	@PostMapping("/saveContact")
 	public String saveContact (@Valid @ModelAttribute("addcontact") Contact saveContact, BindingResult bind, Model theModel){  // na neku foru ovdje umjesto atributa addcontact moze biti bilokaj - TESTIRANO
 		if (bind.hasErrors()){
@@ -101,27 +123,40 @@ public class ContactController {
 		}
 	}
 	
-	//@PreAuthorize("hasRole('ADMIN')")
+	/**
+	 * Handles the update request from the contact-list page
+	 * 
+	 * Uses the parameter ID to retrieve the selected Contact entry from the database. The add-contact form uses this data to prepopulate the form.
+	 * Retrieves the cities/sex list required for dropdown list selection. The data is placed in the model and the user redirected to the add-city view.
+	 * 
+	 * @param theId		ID of the selected contact the update is being performed on
+	 * @param theModel	Model container with the Contact and City/Sex list data
+	 * @return			Add-contact form, prepopulated with the selected Contact object data
+	 */
 	@GetMapping("/update")
 	public String updateContact(@RequestParam("contactId") long theId, Model theModel ){
+		Contact theContact = contactService.getContact(theId);
+		theModel.addAttribute("addcontact", theContact);
 		
-		Contact theContact = contactService.getContact(theId);  //get the contact from the DB via service
-		theModel.addAttribute("addcontact", theContact);  //set the contact as model to prepopulate the form
-		
-		List<Sex> sexList = contactService.getSexList();  //get full sex table from the DB via service impl
-		theModel.addAttribute("sexoptions", sexList);   // add the sexList to the model
-		
+		List<Sex> sexList = contactService.getSexList();
+		theModel.addAttribute("sexoptions", sexList);	
 		List<City> cityList = cityService.getCityList();
-		theModel.addAttribute("cityoptions", cityList);   // add the cityList to the model
-
-//		List<Country> countryList = contactService.getCountryList();
-//		theModel.addAttribute("countryoptions", countryList);   // add the countryList to the model
+		theModel.addAttribute("cityoptions", cityList);
+		
 		return "add-contact-form";
 	}
 	
+	/**
+	 * Handles the delete request from the contact-list page
+	 * 
+	 * Uses the parameter ID to specify the Contact entry in the database.
+	 * Calls the delete method and redirects the user back to the contact-list page
+	 * 
+	 * @param theId	ID of the selected Contact the delete is requested for
+	 * @return		Redirects the user back to the contact-list page
+	 */
 	@GetMapping("/delete")
-	public String deleteContact(@RequestParam("contactId") long theId, Model theModel){
-		//delete the contact
+	public String deleteContact(@RequestParam("contactId") long theId){
 		contactService.deleteContact(theId);
 		return "redirect:/contact/list";
 	}

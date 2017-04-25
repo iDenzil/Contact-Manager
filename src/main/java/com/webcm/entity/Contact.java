@@ -25,23 +25,23 @@ public class Contact {
 	private long id;
 	
 	@NotNull(message="Required input")
-	//@Pattern(regexp="^[a-zA-Z]", message="Requires A-Z only")
+	@Pattern(regexp="[a-zA-Z]+", message="Letters A-Z only")
 	@Size(min=2, max=20, message="Required input (2-20 characters)")
 	@Column(name="first_name")
 	private String firstName;
 	
 	@NotNull(message="Required input")
-	//@Pattern(regexp="^[a-zA-Z]", message="Requires A-Z only")
+	@Pattern(regexp="[a-zA-Z]+", message="Letters A-Z only")
 	@Size(min=2, max=50, message="Required input (2-50 characters)")
 	@Column(name="last_name")
 	private String lastName;
 
 	@NotNull(message="Required input")
+	@Pattern(regexp="[\\d]+", message="Digits 0-9 only")
 	@Size(min=6, max=13, message="Required input (6-13 characters)")
 	@Column(name="phone")
 	private String phone;
 	
-	//@NotNull(message="Required input")
 	//@Email(message="Please provide a valid email address")
 	@Size(max=50, message="Max input 50 characters")
 	@Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address")

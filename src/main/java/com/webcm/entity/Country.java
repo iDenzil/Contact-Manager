@@ -24,19 +24,17 @@ public class Country {
 	
 	@NotNull(message="Required input")
 	@Size(min=2, max=50, message="Required input (2-50 characters)")
-	//@Pattern(regexp="^[a-zA-Z]", message="Requires A-Z only")
+	@Pattern(regexp="[a-zA-Z]+", message="Requires A-Z only")
 	@Column(name="name")
 	private String name;
 	
 	@NotNull(message="Required input")
-	@Pattern(regexp="^[a-zA-Z]{2}", message="Requires 2 letter code")
-	//@Size(min=2, max=2, message="Required input (2 characters)")
+	@Pattern(regexp="[a-zA-Z]{2}+", message="Requires 2 letter code")
 	@Column(name="alpha_2")
 	private String alpha2;
 
 	@NotNull(message="Required input")
-	@Pattern(regexp="^[a-zA-Z]{3}", message="Requires 3 letter code")
-	//@Size(min=3, max=3, message="Required input (3 characters)")
+	@Pattern(regexp="[a-zA-Z]{3}+", message="Requires 3 letter code")
 	@Column(name="alpha_3")
 	private String alpha3;
 

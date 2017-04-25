@@ -10,13 +10,31 @@ import org.springframework.stereotype.Repository;
 
 import com.webcm.entity.Country;
 
+/**
+ * DAO layer implementation for Country entity
+ * 
+ * Implementation of the required methods for communication with the database and perfoming all the neccessary operations
+ * 
+ * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
+ * @version %I%, %G% 
+ *
+ */
 @Repository
 public class CountryDAOImpl implements CountryDAO {
 
-	// inject session factory
+	/**
+	 * Injects the session factory when needed. 
+	 * 
+	 * Sesssion factory is defined ni the hibernate configuration section of the dispatcher servlet
+	 */
 	@Autowired
-	private SessionFactory sessionFactory; //this is the sessionFactory defined in the hibernate configuration in dispatcher-servlet.xml
+	private SessionFactory sessionFactory; 
 	
+	/**
+	 * Retrieves all the Country entries from the database in a List format
+	 * 
+	 * Retrieves the current session, creates the query and puts the query result list in the return object, the Country list.
+	 */
 	@Override
 	public List<Country> getCountryList() {
 		Session currentSession = sessionFactory.getCurrentSession();// System.out.println("got session");
@@ -25,6 +43,11 @@ public class CountryDAOImpl implements CountryDAO {
 		return countryList;
 	}
 
+	/**
+	 * Retrieves specified Country object from the database
+	 * 
+	 * Retrieves the current session and uses Hibernate get() method on the required class object using parameter ID to specify the object. 
+	 */
 	@Override
 	public Country getCountry(long theId) {
 		Session currentSession = sessionFactory.getCurrentSession();
@@ -32,12 +55,25 @@ public class CountryDAOImpl implements CountryDAO {
 		return theCountry;
 	}
 
+	/**
+	 * Saves the attribute Country into the database
+	 * 
+	 *  Retrieves the current session and uses Hibernate saveOrUpdate() method on the parameter Country object.
+	 *  Both Save and Update on an object called by the controller are processed in this method.
+	 *  Hibernate has implemented logic that checks for existing ID, if it exists Update is called, if not Save is called.
+	 */
 	@Override
 	public void saveCountry(Country saveCountry) {
 		Session currentSession = sessionFactory.getCurrentSession();System.out.println("Session gotten");
 		currentSession.saveOrUpdate(saveCountry); System.out.println("saved or updated");
 	}
 
+	/**
+	 * Removes the specified Country entry from the database
+	 * 
+	 * Retrieves the current session, uses Hibernate get() method on the required class object to retrieve the object based on ID and finally removes the entry from the database.
+	 *
+	 */
 	@Override
 	public void deleteCountry(long theId) {
 		Session currentSession = sessionFactory.getCurrentSession();

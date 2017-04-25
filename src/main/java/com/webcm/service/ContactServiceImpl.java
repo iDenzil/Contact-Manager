@@ -9,56 +9,59 @@ import org.springframework.transaction.annotation.Transactional;
 import com.webcm.dao.ContactDAO;
 import com.webcm.entity.Contact;
 import com.webcm.entity.Sex;
-
+/**
+ * Service layer implementation for Contact entity
+ * 
+ * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
+ * @version %I%, %G% 
+ */
 @Service
 public class ContactServiceImpl implements ContactService {
 
-	//need to inject DAO
+	/**
+	 * Injects the DAO layer
+	 */
 	@Autowired
 	private ContactDAO contactDAO;
 
-	
+	/**
+	 * Delegates the request to the DAO layer
+	 */
 	@Override
 	@Transactional
 	public List<Contact> getContacts() {
 		return contactDAO.getContacts();
 	}
 
-
+	/**
+	 * Delegates the request to the DAO layer
+	 */
 	@Override
 	@Transactional
 	public void saveContact(Contact saveContact) {
 		contactDAO.saveContact(saveContact);		
 	}
-
+	/**
+	 * Delegates the request to the DAO layer
+	 */
 	@Override
 	@Transactional
 	public Contact getContact(long theId) {
 		return contactDAO.getContact(theId);
 	}
 
-
+	/**
+	 * Delegates the request to the DAO layer
+	 */
 	@Override
 	@Transactional
 	public void deleteContact(long theId) {
 		contactDAO.deleteContact(theId);
 	}
 
-
-	@Override
-	@Transactional
-	public void doTest() {
-		// obrisati
-		contactDAO.doTest();
-	}
-/*
-	@Override
-	@Transactional
-	public Sex getSex(long theId) {
-		return contactDAO.getSex(theId);
-	}
-*/
-
+	/**
+	 * Delegates the request to the DAO layer
+	 */
 	@Override
 	@Transactional
 	public List<Sex> getSexList() {

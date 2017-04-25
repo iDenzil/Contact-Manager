@@ -13,16 +13,12 @@
 			<br>
 			<h4>ToDo List:</h4>
 			<ul>
-				<li>Address Validation - street name and number</li>
-				<li>Fix pattern vaildator for names</li>
-				<li>Exception managment! Disable DELETE country(city) if FK bound to a city(address).</li>
-				<li>Full Javadoc implementation</li>
+				<li>How to perform Address Validation??</li>
 				<li>User access levels regulation..not as easy as expected</li>
-				<li>look into PostMapping(/saveContact) method saveContact (@ModelAttribute("contact") - why not addcontact.</li>
 			</ul>
 
 			<input class="btn-lg btn-primary" type="Submit" value="Buttons demo"
-				onclick="window.location.href='/contact/buttons';return false;"/>
+				onclick="window.location.href='/buttons';return false;"/>
 			
 			<br><br><br><br>
 			<div id="headersmall">
@@ -59,6 +55,18 @@
 				<li>More timewasting on buttons and aesthetics</li>
 				<li>EVERY(basic)THING WORKS!</li>
 				<li>Implemented Validation. Everything except address fields works</li>
+			</ul>
+			<label>24.04. - Alpha 0.7</label>
+			<ul>
+				<li>Fixed pattern vaildator for names</li>
+				<li>Implemented Javadoc comments</li>
+				<li>Removed the unneccesary Model parameter from the Delete controller methods</li>
+			</ul>
+			<label>24.04. - Beta 0.9</label>
+			<ul>
+				<li>Implemented delete used City/Country object exception handling in City/Country controllers</li>
+				<li>Created basic error view</li>
+				<li>Full Javadoc implementation finished</li>
 			</ul>
 		</div>
 	</div>
