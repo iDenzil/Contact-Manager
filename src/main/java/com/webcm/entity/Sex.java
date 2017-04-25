@@ -10,24 +10,14 @@ import javax.persistence.Table;
 public class Sex {
 	
 	@Id
-//	@SequenceGenerator(name="pk_sequence",sequenceName="sex_id_seq", allocationSize=1)
-//	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
 	@Column(name="id", unique=true, nullable=false)
 	private long id;
 
 	@Column(name="name")
 	private String name;
 	
-	//private LinkedHashMap<Integer, String> sexoptions;
-	
 	public Sex() {
-	//	sexoptions = new LinkedHashMap<>();
-	//	sexoptions.put((int) id, name);
 	}
-	
-	/*public LinkedHashMap<Integer, String> getSexoptions() {
-		return sexoptions;
-	}*/
 
 	public Sex(String name) {
 		this.name = name;

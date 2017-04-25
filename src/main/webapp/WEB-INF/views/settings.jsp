@@ -13,7 +13,6 @@
 			<br>
 			<h4>ToDo List:</h4>
 			<ul>
-				<li>How to perform Address Validation??</li>
 				<li>User access levels regulation..not as easy as expected</li>
 			</ul>
 
@@ -67,6 +66,7 @@
 				<li>Implemented delete used City/Country object exception handling in City/Country controllers</li>
 				<li>Created basic error view</li>
 				<li>Full Javadoc implementation finished</li>
+				<li>Implemented address validation</li>
 			</ul>
 		</div>
 	</div>

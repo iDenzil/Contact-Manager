@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -48,11 +49,10 @@ public class Contact {
 	@Column(name="email")
 	private String email;
 
-	//@Column(name="address_id")
+	@Valid
 	@OneToOne(cascade=CascadeType.ALL)
 	private Address address;
 
-	//@Column(name="sex_id")
 	@ManyToOne(cascade = CascadeType.MERGE)
 	private Sex sex;
 	

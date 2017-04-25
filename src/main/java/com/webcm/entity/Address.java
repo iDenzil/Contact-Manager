@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="address")
@@ -20,13 +22,13 @@ public class Address {
 	@Column(name="id", unique=true, nullable=false)
 	private long id;
 	
-	//@NotNull(message="Required input")
-	//@Size(min=2, max=20, message="Required input (2-20 characters)")
+	//@Pattern(regexp="\\w+,", message="Letters A-Z only")
+	@Size(min=2, max=20, message="Required input (2-20 characters)")
 	@Column(name="street")
 	private String street;
 	
-	//@NotNull(message="Required input")
-	//@Size(min=1, max=5, message="Required input (1-5 characters)")
+	@Pattern(regexp="[a-zA-Z0-9]+{1,}", message="Letters and digity only")
+	@Size(min=1, max=5, message="Required input (1-5 characters)")
 	@Column(name="street_no")
 	private String streetNo;
 	

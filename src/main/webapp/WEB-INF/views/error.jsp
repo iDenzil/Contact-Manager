@@ -9,8 +9,9 @@
 			
 	<div id="container">
 		<div id="content">
-			<h3>You can't delete this entry. Still bound to an existing object (city or address). <br>
-				Try removing the causing entry first.</h3>
+			<h3>You can't delete this entry.</h3> <br>
+			<h4>Still bound to an existing object (city or address). <br>
+				Try removing the causing entry first.</h4>
 		</div>
 	</div>
 
