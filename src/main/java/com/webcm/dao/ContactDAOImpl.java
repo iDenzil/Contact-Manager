@@ -17,7 +17,7 @@ import com.webcm.entity.Sex;
  * Implementation of the required methods for communication with the database and perfoming all the neccessary operations
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version %I%, %G% 
+ * @version 1.0, 26.04.2017. 
  *
  */
 @Repository
@@ -64,9 +64,9 @@ public class ContactDAOImpl implements ContactDAO {
 	 *  Hibernate has implemented logic that checks for existing ID, if it exists Update is called, if not Save is called.
 	 */
 	@Override
-	public void saveContact(Contact saveContact) {
+	public void saveContact(Contact newContact) {
 		Session currentSession = sessionFactory.getCurrentSession();
-		currentSession.saveOrUpdate(saveContact);
+		currentSession.saveOrUpdate(newContact);
 	}
 
 	/**

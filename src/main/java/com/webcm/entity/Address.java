@@ -22,7 +22,7 @@ public class Address {
 	@Column(name="id", unique=true, nullable=false)
 	private long id;
 	
-	//@Pattern(regexp="\\w+,", message="Letters A-Z only")
+	//@Pattern(regexp="\\w+,", message="Letters A-Z only")				//gave up on @Pattern on account of special characters
 	@Size(min=2, max=20, message="Required input (2-20 characters)")
 	@Column(name="street")
 	private String street;

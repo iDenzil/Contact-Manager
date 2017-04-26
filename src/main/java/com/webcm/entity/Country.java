@@ -24,7 +24,7 @@ public class Country {
 	
 	@NotNull(message="Required input")
 	@Size(min=2, max=50, message="Required input (2-50 characters)")
-	@Pattern(regexp="[a-zA-Z]+", message="Requires A-Z only")
+	//@Pattern(regexp="[a-zA-Z]+", message="Requires A-Z only")				//gave up on @Pattern on account of special characters
 	@Column(name="name")
 	private String name;
 	
@@ -83,6 +83,24 @@ public class Country {
 	public String toString() {
 		return name+", "+alpha2+", "+alpha3;
 	}
+
 	
-	
+
+	/**
+	 * Compares two Country objects (custom equals implementation) 
+	 * 
+	 * Cross-references the two objects for any matching attribute pair.
+	 * Returns true on any match.
+	 */
+	public boolean compare(Country other) {
+		Boolean result=false;
+		if (alpha2.equalsIgnoreCase(other.alpha2)) {
+				result=true;}
+		if (alpha3.equalsIgnoreCase(other.alpha3)) {
+				result=true;}
+		if (name.equalsIgnoreCase(other.name)) {
+				result=true;}
+		return result;
+	}
+
 }

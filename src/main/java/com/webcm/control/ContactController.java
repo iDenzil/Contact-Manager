@@ -22,7 +22,15 @@ import com.webcm.entity.Contact;
 import com.webcm.entity.Sex;
 import com.webcm.service.CityService;
 import com.webcm.service.ContactService;
-
+/**
+ * Controller for handling all requests related to Contact objects.
+ * 
+ * Handles requests for CRUD operations and performs validation on the data using Hibernate Validator. 
+ * 
+ * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
+ * @version 1.0, 26.04.2017. 
+ *
+ */
 @Controller
 @RequestMapping("/contact")
 public class ContactController {
@@ -39,7 +47,6 @@ public class ContactController {
 	@Autowired
 	private CityService cityService;	
 	
-	/**
 	/**
 	 * Performs white space trimming on Strings as a part of validation process.
 	 * 
@@ -115,10 +122,10 @@ public class ContactController {
 			theModel.addAttribute("sexoptions", sexList);	 	//required for dropdown sex list
 			List<City> cityList = cityService.getCityList();	//required for dropdown city list 
 			theModel.addAttribute("cityoptions", cityList); 	//required for dropdown city list
-			return "add-contact-form";
+			return "add-contact-form";							//validation failed -> return to add-form
 		}
-		else {
-			contactService.saveContact(saveContact);
+		else {													
+			contactService.saveContact(saveContact);			//validation passed -> call Save method
 			return "redirect:/contact/list";
 		}
 	}

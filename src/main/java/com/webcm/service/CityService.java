@@ -9,7 +9,7 @@ import com.webcm.entity.City;
  * Implements the business logic between the controller and the DAO layer.
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version %I%, %G% 
+ * @version 1.0, 26.04.2017. 
  *
  */
 public interface CityService {
@@ -32,16 +32,19 @@ public interface CityService {
 	/**
 	 * Saves the attribute City into the database
 	 * 
-	 * @param saveCity	The City object that needs to be saved
+	 * @param newCity	The City object that needs to be saved
+	 * @return			Boolean statement - if the City already exists in the database
 	 */
-	public void saveCity(City saveCity);
+	public Boolean saveCity(City newCity);
 
 	/**
 	 * Removes the specified City entry from the database
 	 * 
 	 * @param theId	ID of the City object to be deleted
+	 * @return False if object was deleted, true otherwise
 	 */
-	public void deleteCity(long theId);
+	public Boolean deleteCity(long theId);
+
 
 }
 

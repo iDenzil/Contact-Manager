@@ -16,7 +16,7 @@ import com.webcm.entity.Country;
  * Implementation of the required methods for communication with the database and perfoming all the neccessary operations
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version %I%, %G% 
+ * @version 1.0, 26.04.2017. 
  *
  */
 @Repository
@@ -37,9 +37,9 @@ public class CountryDAOImpl implements CountryDAO {
 	 */
 	@Override
 	public List<Country> getCountryList() {
-		Session currentSession = sessionFactory.getCurrentSession();// System.out.println("got session");
-		Query<Country> theQuery = currentSession.createQuery("from Country",Country.class); //System.out.println("finished query");
-		List<Country> countryList = theQuery.getResultList();// System.out.println("got result list");
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query<Country> theQuery = currentSession.createQuery("from Country",Country.class); 
+		List<Country> countryList = theQuery.getResultList();
 		return countryList;
 	}
 
@@ -63,9 +63,9 @@ public class CountryDAOImpl implements CountryDAO {
 	 *  Hibernate has implemented logic that checks for existing ID, if it exists Update is called, if not Save is called.
 	 */
 	@Override
-	public void saveCountry(Country saveCountry) {
-		Session currentSession = sessionFactory.getCurrentSession();System.out.println("Session gotten");
-		currentSession.saveOrUpdate(saveCountry); System.out.println("saved or updated");
+	public void saveCountry(Country newCountry) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		currentSession.saveOrUpdate(newCountry); 
 	}
 
 	/**

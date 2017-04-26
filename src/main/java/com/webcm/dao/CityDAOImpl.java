@@ -15,7 +15,7 @@ import com.webcm.entity.City;
  * Implementation of the required methods for communication with the database and perfoming all the neccessary operations
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version %I%, %G% 
+ * @version 1.0, 26.04.2017. 
  *
  */
 @Repository
@@ -62,9 +62,9 @@ public class CityDAOImpl implements CityDAO {
 	 *  Hibernate has implemented logic that checks for existing ID, if it exists Update is called, if not Save is called.
 	 */
 	@Override
-	public void saveCity(City saveCity) {
+	public void saveCity(City newCity) {
 		Session currentSession = sessionFactory.getCurrentSession();
-		currentSession.saveOrUpdate(saveCity); 
+		currentSession.saveOrUpdate(newCity); 
 	}
 	
 	/**

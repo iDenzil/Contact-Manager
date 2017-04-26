@@ -19,8 +19,7 @@
 		
 		<form:form action="saveCity" modelAttribute="addcity" method="POST">
 		
-		<!-- Need to associate this data with contact and address id -->
-		<!-- So when doing submit the backend knows which contact to form the update operation on <form:hidden path="country.id"/>-->
+		<!-- Need to link this data with City id -->
 		<form:hidden path="id"/>
 		
 			<table>

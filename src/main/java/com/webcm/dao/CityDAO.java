@@ -9,7 +9,7 @@ import com.webcm.entity.City;
  * Communicates with the database and performs required operations on the database 
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version %I%, %G% 
+ * @version 1.0, 26.04.2017. 
  *
  */
 public interface CityDAO {
@@ -32,9 +32,9 @@ public interface CityDAO {
 	/**
 	 * Saves the attribute City into the database
 	 * 
-	 * @param saveCity	The City object that needs to be saved
+	 * @param newCity	The City object that needs to be saved
 	 */
-	public void saveCity(City saveCity);
+	public void saveCity(City newCity);
 
 	/**
 	 * Removes the specified City entry from the database

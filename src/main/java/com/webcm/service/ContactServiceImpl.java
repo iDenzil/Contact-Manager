@@ -13,7 +13,7 @@ import com.webcm.entity.Sex;
  * Service layer implementation for Contact entity
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version %I%, %G% 
+ * @version 1.0, 26.04.2017. 
  */
 @Service
 public class ContactServiceImpl implements ContactService {
@@ -32,15 +32,7 @@ public class ContactServiceImpl implements ContactService {
 	public List<Contact> getContacts() {
 		return contactDAO.getContacts();
 	}
-
-	/**
-	 * Delegates the request to the DAO layer
-	 */
-	@Override
-	@Transactional
-	public void saveContact(Contact saveContact) {
-		contactDAO.saveContact(saveContact);		
-	}
+	
 	/**
 	 * Delegates the request to the DAO layer
 	 */
@@ -48,6 +40,15 @@ public class ContactServiceImpl implements ContactService {
 	@Transactional
 	public Contact getContact(long theId) {
 		return contactDAO.getContact(theId);
+	}
+
+	/**
+	 * Delegates the request to the DAO layer
+	 */
+	@Override
+	@Transactional
+	public void saveContact(Contact newContact) {
+		contactDAO.saveContact(newContact);		
 	}
 
 	/**

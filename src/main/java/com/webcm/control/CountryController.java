@@ -26,7 +26,7 @@ import com.webcm.service.CountryService;
  * Handles requests for CRUD operations and performs validation on the data using Hibernate Validator. 
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version %I%, %G% 
+ * @version 1.0, 26.04.2017. 
  *
  */
 @Controller
@@ -93,7 +93,7 @@ public class CountryController {
 	 * Redirected from the add-country form page containing the data in the model. 
 	 * Data validation is requested using Valid annotation and the validation result is stored in the BindingResult object.
 	 * If the result has errors, the user is returned back to the add-country form.
-	 * IF the result has no errors, the save method is called and the user is redurected to the country-list page.  
+	 * If the result has no errors, data is validated against database, the save method is called and the user is redurected to the country-list page.  
 	 * 
 	 * @param saveCountry	Model attribute containing the new country data
 	 * @param bind			The validation result object
@@ -101,10 +101,10 @@ public class CountryController {
 	 */
 	@PostMapping("/saveCountry")
 	public String saveCountry (@Valid @ModelAttribute("addcountry") Country saveCountry, BindingResult bind){
-		if (bind.hasErrors()) return "add-country-form";
-		else {
-			countryService.saveCountry(saveCountry);
-			return "redirect:/country/list";
+		if (bind.hasErrors()) return "add-country-form";							//validation failed -> return to add-form
+		else {																		//validation passed -> call Save method
+			if (countryService.saveCountry(saveCountry)) return "error-exist";		//TRUE return value -> error view 
+			return "redirect:/country/list";										//FALSE return value -> save is complete, redirect to the list
 		}
 	}
 
@@ -136,12 +136,7 @@ public class CountryController {
 	 */
 	@GetMapping("/delete")
 	public String deleteCountry(@RequestParam("countryId") long theId){
-		try {
-			countryService.deleteCountry(theId);
-		} catch(Exception e) {
-			e.printStackTrace();
-			return "redirect:/error";
-		} 
-		return "redirect:/country/list";
+		if (countryService.deleteCountry(theId)) return "error-delete";		//calls boolean Delete. If TRUE return value -> error view 
+		return "redirect:/country/list";									//FALSE return value -> delete is complete, redirect to the list
 	}
 }

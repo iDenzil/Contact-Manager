@@ -9,7 +9,7 @@ import com.webcm.entity.Country;
  * Implements the business logic between the controller and the DAO layer.
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version %I%, %G% 
+ * @version 1.0, 26.04.2017. 
  *
  */
 public interface CountryService {
@@ -30,18 +30,20 @@ public interface CountryService {
 	public Country getCountry(long theId);
 	
 	/**
-	 * Saves the attribute Country into the database
+	 * Compares to the other entries in the database and saves the object.
 	 * 
-	 * @param saveCountry	The Country object that needs to be saved
+	 * @param newCountry	The Country object that needs to be saved
+	 * @return				Boolean statement - if there is match to a country in the database
 	 */
-	public void saveCountry(Country saveCountry);
+	public Boolean saveCountry(Country newCountry);
 	
 	/**
 	 * Removes the specified Country entry from the database
 	 * 
 	 * @param theId	ID of the Country object to be deleted
+	 * @return False if object was deleted, true otherwise
 	 */
-	public void deleteCountry(long theId);
+	public Boolean deleteCountry(long theId);
 
 }
 

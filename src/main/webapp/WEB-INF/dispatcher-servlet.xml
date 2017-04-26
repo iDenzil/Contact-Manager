@@ -23,8 +23,7 @@
 	    <!-- Location of the webjars, required for Bootstrap implementation -->
 	    <!-- <mvc:resources mapping="/webjars/**" location="/webjars/"/> -->
 	    <mvc:resources mapping="/resources/**" location="/resources/"/>
-	    <!-- Attribute LOCATION=actual physical directory name that is under webapp.. or is it? -->
-	    <!-- mapping STARSTAR means to repply recurisivly to all subdirectories -->
+	    <!-- Attribute LOCATION == actual physical directory name that is under webapp -->
 	    
 	    <!-- Defines the Spring View Resolver --> 
 	    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

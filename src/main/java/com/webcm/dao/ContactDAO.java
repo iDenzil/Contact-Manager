@@ -11,7 +11,7 @@ import com.webcm.entity.Sex;
  * Communicates with the database and performs required operations on the database 
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version %I%, %G% 
+ * @version 1.0, 26.04.2017. 
  *
  */
 public interface ContactDAO {
@@ -34,9 +34,9 @@ public interface ContactDAO {
 	/**
 	 * Saves the attribute Contact into the database
 	 * 
-	 * @param saveContact	The Contact object that needs to be saved
+	 * @param newContact	The Contact object that needs to be saved
 	 */
-	public void saveContact(Contact saveContact);
+	public void saveContact(Contact newContact);
 	
 	/**
 	 * Removes the specified Contact entry from the database

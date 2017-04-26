@@ -28,7 +28,7 @@ import com.webcm.service.CountryService;
  * Handles requests for CRUD operations and performs validation on the data using Hibernate Validator. 
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version %I%, %G% 
+ * @version 1.0, 26.04.2017. 
  *
  */
 @Controller
@@ -104,7 +104,7 @@ public class CityController {
 	 * Redirected from the add-city form page containing the data in the model. 
 	 * Data validation is requested using Valid annotation and the validation result is stored in the BindingResult object.
 	 * If the result has errors, the user is returned back to the add-city form. Controller has to request the Country list again to populate the dropdown menu.
-	 * IF the result has no errors, the save method is called and the user is redirected to the city-list page.  
+	 * If the result has no errors, data is validated against database, the save method is called and the user is redirected to the city-list page.  
 	 * 
 	 * @param saveCity	Model attribute containing the new city data
 	 * @param bind		The validation result object
@@ -114,13 +114,13 @@ public class CityController {
 	@PostMapping("/saveCity")
 	public String saveCity (@Valid @ModelAttribute("addcity") City saveCity, BindingResult bind, Model theModel){
 		if (bind.hasErrors()){
-			List<Country> countryList = countryService.getCountryList(); //required for dropdown country list 
-			theModel.addAttribute("countryoptions", countryList); 		 //required for dropdown country list
-			return "add-city-form";
+			List<Country> countryList = countryService.getCountryList();//required for dropdown country list 
+			theModel.addAttribute("countryoptions", countryList); 		//required for dropdown country list
+			return "add-city-form";										//validation failed -> return to add-form
 		}
-		else {
-			cityService.saveCity(saveCity);
-			return "redirect:/city/list";
+		else {															//validation passed -> call Save method
+			if (cityService.saveCity(saveCity)) return "error-exist"; //TRUE return value -> error view 
+			return "redirect:/city/list";								//FALSE return value -> save is complete, redirect to the list
 		}
 	}
 
@@ -155,13 +155,8 @@ public class CityController {
 	 */
 	@GetMapping("/delete")
 	public String deleteCity(@RequestParam("cityId") long theId){
-		try {
-			cityService.deleteCity(theId);
-		} catch(Exception e) {
-			e.printStackTrace();
-			return "redirect:/error";
-		} 
-		return "redirect:/city/list";
+		if (cityService.deleteCity(theId)) return "error-delete";		//calls boolean Delete. If TRUE return value -> error view 
+		return "redirect:/city/list";									//FALSE return value -> delete is complete, redirect to the list
 	}
 
 }

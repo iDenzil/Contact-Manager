@@ -13,7 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * Defines user roles and assigns access to the roles based on the URL pattern
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version %I%, %G% 
+  * @version 1.0, 26.04.2017. 
  *
  */
 @Configuration
@@ -41,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/login").permitAll()
-			.antMatchers("/","/*country*/**", "/*city*/**", "/*contact*/**", "/*welcome*/**", "/*settings*/**", "/*about*/**", "/*error*/**").access("hasRole('USER')").and().formLogin();
+			.antMatchers("/","/*country*/**", "/*city*/**", "/*contact*/**", "/*welcome*/**", "/*settings*/**", "/*about*/**").access("hasRole('USER')").and().formLogin();
 			//.antMatchers("/","/*update*/**", "/*delete*/**").access("hasRole('ADMIN')").and().formLogin();
 	}
 }

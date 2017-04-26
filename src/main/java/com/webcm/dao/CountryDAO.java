@@ -10,7 +10,7 @@ import com.webcm.entity.Country;
  * Communicates with the database and performs required operations on the database 
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version %I%, %G% 
+ * @version 1.0, 26.04.2017. 
  *
  */
 public interface CountryDAO {
@@ -33,9 +33,9 @@ public interface CountryDAO {
 	/**
 	 * Saves the attribute Country into the database
 	 * 
-	 * @param saveCountry	The Country object that needs to be saved
+	 * @param newCountry	The Country object that needs to be saved
 	 */
-	public void saveCountry(Country saveCountry);
+	public void saveCountry(Country newCountry);
 
 	/**
 	 * Removes the specified Country entry from the database

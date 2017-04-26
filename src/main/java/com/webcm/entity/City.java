@@ -25,7 +25,7 @@ public class City {
 	private long id;
 
 	@NotNull(message="Required input")
-	@Pattern(regexp="[a-zA-Z]+", message="Requiers A-Z only")
+	//@Pattern(regexp="[a-zA-Z]+", message="Requiers A-Z only")			//gave up on @Pattern on account of special characters
 	@Size(min=2, max=50, message="Required input (2-50 characters)")
 	@Column(name="name")
 	private String name;
@@ -83,6 +83,23 @@ public class City {
 	@Override
 	public String toString() {
 		return name + ", " + zipCode + ", " +country;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		City other = (City) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equalsIgnoreCase(other.name))
+			return false;
+		return true;
 	}
 	
 }

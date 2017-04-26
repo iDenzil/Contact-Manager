@@ -3,16 +3,17 @@
 
 	<div id="wrapper">
 		<div id="header">
-			<h2>CM - Contact Manager v0.9 Beta</h2>
+			<h2>Welcome ${name}</h2>
 		</div>
 	</div>
 		
 	<div id="container">
 		<div id="content">
-			
-			<input class="btn-lg btn-success" type="Submit" value="Welcome ${name}. Consider implementing a decent landing page."
-							onclick="window.location.href='/contact/list';return false;"/>
-
+			<img src="/resources/images/CMlogo.jpg">
+		
+			<br><br><br><br>
+			<input class="btn-lg btn-default" type="Submit" value="Proceed"
+				onclick="window.location.href='/contact/list';return false;"/>
 		</div>
 	</div>
 

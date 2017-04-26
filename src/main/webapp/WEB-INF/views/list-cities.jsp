@@ -3,7 +3,7 @@
 
 	<div id="wrapper">
 		<div id="header">
-			<h2>CM - Contact Manager v0.9 Beta</h2>
+			<h2>CM - Contact Manager v1.0</h2>
 		</div>
 	</div>
 	<br>	

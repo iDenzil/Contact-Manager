@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * Controller for handling welcome and the login/logout functionality
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version %I%, %G% 
+ * @version 1.0, 26.04.2017. 
  *
  */
 @Controller
@@ -58,24 +58,7 @@ public class LoginController {
 	public String settings(){
 		return "settings";
 	}
-	
-	/**
-	 * Handles the Error request.
-	 * 
-	 * The exception thrown when trying to delete an object still referenced in the database redirects the user to the error view.
-	 * 
-	 * @return	Error view
-	 */
-	@GetMapping("/error")
-	public String error(){
-		return "error";
-	}
-	
-	@GetMapping("/buttons")
-	public String buttons(){
-		return "buttons";
-	}
-	
+
 
 	/**
 	 * Spring security method that retrieves the username of the logged in user.

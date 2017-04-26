@@ -10,7 +10,7 @@ import com.webcm.entity.Sex;
  * Implements the business logic between the controller and the DAO layer.
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version %I%, %G% 
+ * @version 1.0, 26.04.2017. 
  *
  */
 public interface ContactService {
@@ -32,9 +32,9 @@ public interface ContactService {
 	/**
 	 * Saves the attribute Contact into the databse
 	 * 
-	 * @param saveContact	The Contact object that needs to be saved
+	 * @param newContact	The Contact object that needs to be saved
 	 */
-	public void saveContact(Contact saveContact);
+	public void saveContact(Contact newContact);
 	
 	/**
 	 * Removes the specified Contact entry from the database
