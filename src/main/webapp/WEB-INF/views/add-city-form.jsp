@@ -64,7 +64,7 @@
 	</div>
 
 	<br><br>
-	<input class="btn btn-sm" type="Submit" value="Back"
+	<input class="btn-sm" type="Submit" value="Back"
 		onclick="window.history.back();return false;"/>
 	<br><br>
 		

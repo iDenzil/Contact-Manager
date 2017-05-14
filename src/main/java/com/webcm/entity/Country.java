@@ -94,12 +94,16 @@ public class Country {
 	 */
 	public boolean compare(Country other) {
 		Boolean result=false;
+		
+		if (id!=other.id){							 		// perform the compare only if IDs are not equal
 		if (alpha2.equalsIgnoreCase(other.alpha2)) {
 				result=true;}
 		if (alpha3.equalsIgnoreCase(other.alpha3)) {
 				result=true;}
 		if (name.equalsIgnoreCase(other.name)) {
 				result=true;}
+		}
+
 		return result;
 	}
 

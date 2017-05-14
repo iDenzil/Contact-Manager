@@ -15,7 +15,7 @@ import com.webcm.entity.City;
  * Implementation of the required methods for communication with the database and perfoming all the neccessary operations
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version 1.0, 26.04.2017. 
+ * @version 1.0.1, 14.05.2017.
  *
  */
 @Repository
@@ -64,6 +64,7 @@ public class CityDAOImpl implements CityDAO {
 	@Override
 	public void saveCity(City newCity) {
 		Session currentSession = sessionFactory.getCurrentSession();
+		currentSession.clear();											//required for updating. Validation check calls getCityList and creates double items in the session
 		currentSession.saveOrUpdate(newCity); 
 	}
 	

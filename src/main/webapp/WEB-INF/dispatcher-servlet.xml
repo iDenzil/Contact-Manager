@@ -39,10 +39,10 @@
         	<property name="password" value="2111141" /> 
 
 	        <!-- Connection pool properties for C3P0 -->
-    	    <property name="initialPoolSize" value="5"/>
-	        <property name="minPoolSize" value="5" />
-        	<property name="maxPoolSize" value="20" />
-        	<property name="maxIdleTime" value="30000" />
+    	    <property name="initialPoolSize" value="5"/>	<!-- Number of Connections a pool will try to acquire upon startup -->
+	        <property name="minPoolSize" value="5" />		<!-- Minimum number of JDBC connections in the pool -->
+        	<property name="maxPoolSize" value="20" />		<!-- Maximum number of JDBC connections in the pool -->
+        	<property name="maxIdleTime" value="30000" />	<!-- Idle time in seconds before the connection will be destroyed -->
 		</bean>  
 	
     	<!-- Setup Hibernate session factory -->

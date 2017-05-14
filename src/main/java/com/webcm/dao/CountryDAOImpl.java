@@ -16,7 +16,7 @@ import com.webcm.entity.Country;
  * Implementation of the required methods for communication with the database and perfoming all the neccessary operations
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version 1.0, 26.04.2017. 
+ * @version 1.0.1, 14.05.2017.
  *
  */
 @Repository
@@ -38,8 +38,8 @@ public class CountryDAOImpl implements CountryDAO {
 	@Override
 	public List<Country> getCountryList() {
 		Session currentSession = sessionFactory.getCurrentSession();
-		Query<Country> theQuery = currentSession.createQuery("from Country",Country.class); 
-		List<Country> countryList = theQuery.getResultList();
+		Query<Country> theQuery = currentSession.createQuery("from Country",Country.class);
+		List<Country> countryList = theQuery.getResultList();	
 		return countryList;
 	}
 
@@ -65,6 +65,7 @@ public class CountryDAOImpl implements CountryDAO {
 	@Override
 	public void saveCountry(Country newCountry) {
 		Session currentSession = sessionFactory.getCurrentSession();
+		currentSession.clear();												//required for updating. Validation check calls getCoutryList and creates double items in the session
 		currentSession.saveOrUpdate(newCountry); 
 	}
 

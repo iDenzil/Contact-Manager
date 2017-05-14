@@ -13,7 +13,8 @@ import com.webcm.entity.Sex;
  * Service layer implementation for Contact entity
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version 1.0, 26.04.2017. 
+ * @version 1.0.1, 14.05.2017.
+ * 
  */
 @Service
 public class ContactServiceImpl implements ContactService {

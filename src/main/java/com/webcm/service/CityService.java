@@ -9,7 +9,7 @@ import com.webcm.entity.City;
  * Implements the business logic between the controller and the DAO layer.
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version 1.0, 26.04.2017. 
+ * @version 1.0.1, 14.05.2017.
  *
  */
 public interface CityService {

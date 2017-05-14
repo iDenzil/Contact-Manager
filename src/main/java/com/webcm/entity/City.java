@@ -87,18 +87,23 @@ public class City {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+
+			if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		City other = (City) obj;
+
+		if (id==other.id) return false;					// skip the compare if IDs are equal
+
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equalsIgnoreCase(other.name))
 			return false;
+		
 		return true;
 	}
 	

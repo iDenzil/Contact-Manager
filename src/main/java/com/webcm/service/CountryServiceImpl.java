@@ -15,7 +15,7 @@ import com.webcm.entity.Country;
  * Service layer implementation for Country entity
  * 
  * @author Ivor Šoš - <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a>
- * @version 1.0, 26.04.2017. 
+ * @version 1.0.1, 14.05.2017.
  * 
  */
 @Service
@@ -65,7 +65,7 @@ public class CountryServiceImpl implements CountryService {
 	public Boolean saveCountry(Country newCountry) {
 		List<Country> listCountries = getCountryList(); //pulls the database content for comparing
 		Boolean countryExists = false; 					//assume the entry doesn't exist
-		
+
 		for (Country database: listCountries){			//loops the database content
 			countryExists=newCountry.compare(database);	//compares each entry with new entry
 			if (countryExists) return countryExists;	//if exists -> exit save method, return true statement

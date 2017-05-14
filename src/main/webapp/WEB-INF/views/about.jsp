@@ -74,6 +74,13 @@
 				<li>Presentation layer validation againt DB references for Delete and Save</li>
 				<li>Javadoc updates</li>
 			</ul>
+			<label>14.05. - v1.0.1</label>
+			<ul>
+				<li>Fixed City/Country validation when UPDATE called. Disabled database check on equal ID. Required currentSession.clear() before calling save method.</li>
+				<li>Declared Sex entity as <a href="https://docs.jboss.org/hibernate/orm/5.2/javadocs/org/hibernate/annotations/Immutable.html">@Immutable</a></li>
+				<li>Fixed Back button CSS on Add City form page</li>
+				<li>Added C3P0 configuration comments in dispatcher-servlet.xml</li>
+			</ul>
 			
 	<br><br>
 	<input class="btn-sm" type="Submit" value="Home"
