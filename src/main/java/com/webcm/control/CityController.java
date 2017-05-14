@@ -73,7 +73,7 @@ public class CityController {
 	 * @return 			City-list view
 	 */
 	@GetMapping("/list")
-	public String listContacts(Model theModel){
+	public String listCities(Model theModel){
 		List<City> theCities = cityService.getCityList();
 		theModel.addAttribute("cities", theCities);
 		return "list-cities";

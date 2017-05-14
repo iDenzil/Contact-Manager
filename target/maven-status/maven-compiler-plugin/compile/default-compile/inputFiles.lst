@@ -18,5 +18,6 @@ C:\Eclipse\workspace\contact-manager\src\main\java\com\webcm\service\CountryServ
 C:\Eclipse\workspace\contact-manager\src\main\java\com\webcm\dao\CountryDAOImpl.java
 C:\Eclipse\workspace\contact-manager\src\main\java\com\webcm\entity\City.java
 C:\Eclipse\workspace\contact-manager\src\main\java\com\webcm\entity\Contact.java
+C:\Eclipse\workspace\contact-manager\src\main\java\com\webcm\control\AdminController.java
 C:\Eclipse\workspace\contact-manager\src\main\java\com\webcm\security\SecurityConfiguration.java
 C:\Eclipse\workspace\contact-manager\src\main\java\com\webcm\entity\Sex.java

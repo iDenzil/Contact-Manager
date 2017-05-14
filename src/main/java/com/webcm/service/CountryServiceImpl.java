@@ -89,7 +89,7 @@ public class CountryServiceImpl implements CountryService {
 			if (database.getCountry().getId() == theId) return true;	//if a reference exists -> exit delete method, return true statement
 		}																
 		countryDAO.deleteCountry(theId);								//delegate Delete to DAO layer
-		return false;													//return the statement, confirm the delete method was called
+		return false;													//return false statement, confirm the delete method was called
 	}
 
 }

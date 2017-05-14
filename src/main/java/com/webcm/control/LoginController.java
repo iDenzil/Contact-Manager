@@ -10,6 +10,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Controller for handling welcome and the login/logout functionality
@@ -59,6 +60,18 @@ public class LoginController {
 		return "settings";
 	}
 
+	/**
+	 * Mapping method for redirecting access-denied error to the custom view page.
+	 * 
+	 * 403 mapping is called exclusively through Spring security, configured in SecurityConfiguration.java.
+	 * When user logged in with USER role attempts to UPDATE or DELETE a Database entry, 403 is called.
+	 *  
+	 * @return Redirect to the access denied page
+	 */
+	@RequestMapping("/403")
+	public String accessDenied(){
+		return "403";
+	}
 
 	/**
 	 * Spring security method that retrieves the username of the logged in user.

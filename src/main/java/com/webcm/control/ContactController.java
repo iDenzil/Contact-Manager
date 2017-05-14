@@ -78,7 +78,7 @@ public class ContactController {
 		theModel.addAttribute("contacts", theContacts);
 		return "list-contacts";
 	}
-
+	
 	/**
 	 * Handles the add contact request
 	 * 

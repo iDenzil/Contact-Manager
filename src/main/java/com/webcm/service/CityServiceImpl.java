@@ -86,6 +86,6 @@ public class CityServiceImpl implements CityService {
 			if (database.getAddress().getCity().getId() == theId) return true;	//if a reference exists -> exit delete method, return true statement
 		}																
 		cityDAO.deleteCity(theId);												//delegate Delete to DAO layer
-		return false;															//return the statement, confirm the delete method was called
+		return false;															//return false statement, confirm the delete method was called
 	}
 }

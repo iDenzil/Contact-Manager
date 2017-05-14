@@ -80,6 +80,7 @@
 				<li>Declared Sex entity as <a href="https://docs.jboss.org/hibernate/orm/5.2/javadocs/org/hibernate/annotations/Immutable.html">@Immutable</a></li>
 				<li>Fixed Back button CSS on Add City form page</li>
 				<li>Added C3P0 configuration comments in dispatcher-servlet.xml</li>
+				<li>Added support for admin-only update/delete any DB entry. Restricted Settings view to Admin. Custom "access denied(403)" view.</li>
 			</ul>
 			
 	<br><br>

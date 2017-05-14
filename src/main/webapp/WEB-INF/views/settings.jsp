@@ -14,7 +14,6 @@
 			<h4>ToDo List:</h4>
 			<ul>
 				<li>Return values in Delete error view</li>
-				<li>User access levels - limit UPDATE and DELETE to ADMIN role</li>
 			</ul>
 
 
