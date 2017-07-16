@@ -21,7 +21,7 @@ table {
 
 th {
 	border-bottom:1px solid gray;
-	background:none repeat scroll 0 0 #007167;
+	background:none repeat scroll 0 0 #036B83;
 	padding:10px;
 	color: #FFFFFF;
 	text-align:center;	
@@ -50,11 +50,11 @@ tr:nth-child(odd) {background: #f9f9f9}
 
 
 #wrapper {width: 100%; margin-top: 0px; }
-#header { width: 70%; background: #007167; margin-top: 0px; padding:15px 0px 15px 15px; box-shadow: #959595 0 2px 5px; border-color: #000000; border-radius: 10px; text-shadow: 1px 1px 2px #c0c0c0;}
+#header { width: 70%; background: #036B83; margin-top: 0px; padding:15px 0px 15px 15px; box-shadow: #959595 0 2px 5px; border-color: #000000; border-radius: 10px; text-shadow: 1px 1px 2px #c0c0c0;}
 #header h2 {width: 100%; margin:auto; color: #ffffff; }
-#headersmall {width: 50%; background: #09c332; margin-top: 0px; padding:20px 0px 15px 15px; box-shadow: #959595 0 2px 5px;}
+#headersmall {width: 50%; background: #036B83; margin-top: 0px; padding:20px 0px 15px 15px; box-shadow: #959595 0 2px 5px;}
 #headersmall h4 {width: 100%; text-color:#FFFFFF; margin:auto; color: #FFFFFF;}
-#headerdbl {width: 53%; background: #09c332; margin-top: 0px; padding:15px 0px 15px 15px; box-shadow: #959595 0 2px 5px;}
+#headerdbl {width: 53%; background: #0192C1; margin-top: 0px; padding:15px 0px 15px 15px; box-shadow: #959595 0 2px 5px;}
 #container {width: 100%; margin:auto}
 #container h3 {color: #000;}
 #container #content {margin-top: 20px;}

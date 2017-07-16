@@ -10,7 +10,10 @@
 	<div id="container">
 		<div id="content">
 			<h3>About to be an about page.</h3>
+			<br>			
+			<h4>Developed by <a href="mailto:ivor.sos@gmail.com">ivor.sos@gmail.com</a></h4>
 
+			
 			<br>
 			<div id="headerdbl">
 				<h2><label>Implemented DB layout</label></h2>
